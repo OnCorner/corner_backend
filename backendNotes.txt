@@ -1,0 +1,47 @@
+DB Schema
+Instant Messages
+Custom feed for each user
+  - decide which posts a user would delete?
+  - each user has own newsfeed that gets constantly updated
+    - based on group name
+
+User (Shop) (Corner)
+  - superadmin
+  - admin
+  - user
+  - follow Users
+
+Feed (Relevant)
+  - dictated by categories each user is subscribed to
+
+Group (Community)
+  - any one can make groups
+  - group administrator?
+    - kick our members
+    - take care of reporting inappropriate content/Users
+    - incentive for maintaining the group is that we pay them (like YouTube)
+      - in return we get more users
+      - milestones (100 - 200) members, then admin gets more money
+    *** collaboration
+  - advertisements
+  - people can pay to feature their group on Discover
+  - Featured section with 3 items
+
+Categories ()
+  - we make the categories (they are static)
+
+Discover ()
+  - look for new groups
+  - trending groups: based off of most likes
+  - hot groups
+  - largest groups
+  - custom group list in
+
+Item
+
+Comment
+
+Char
+  - has array of Users and Messages
+
+Message
