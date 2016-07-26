@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  connection: 'Core.Item',
+
   attributes: {
     // data
     username: {
@@ -59,15 +59,19 @@ module.exports = {
     },
     subscriptions: {
       collection: 'category',
-      via: 'user'
+      via: 'subscribers'
     },
     groups: {
       collection: 'group',
-      via: 'user'
+      via: 'members'
     },
     tags: {
       collection: 'tag',
-      via: 'item'
+      via: 'creator'
     },
+    chats: {
+      collection: 'chat',
+      via: 'users'
+    }
   }
 };
