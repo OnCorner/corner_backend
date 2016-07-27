@@ -1,0 +1,18 @@
+MongoDB Setup
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+$ brew update
+$ brew install mongodb // this takes awhile
+$ mongod --dbpath /db // while in the corner_backend directory
+*** open a new terminal tab and go to corner_backend
+$ mongo // you are now in the mongo terminal
+> db // shows current database
+> use sails // uses the sails db
+> show tables // shows the sails tables
+> db["3test"].find().pretty() // finds all users in the db
+>
+
+--------------------------------------
+// migrate db
+$ sudo mkdir /var/backups/mongobackups
+$ sudo mongodump --db newdb --out /var/backups/mongobackups/`date +"%m-%d-%y"`

@@ -22,15 +22,15 @@ module.exports = {
     },
     image1: {
       type: 'string',
-      defaultsTo: 'https://m1.behance.net/rendition/modules/89420057/disp/13aed6029ce375799df4ae8343b74da1.jpg',
+      defaultsTo: '',
     },
     image2: {
       type: 'string',
-      defaultsTo: 'https://m1.behance.net/rendition/modules/89420057/disp/13aed6029ce375799df4ae8343b74da1.jpg',
+      defaultsTo: '',
     },
     image3: {
       type: 'string',
-      defaultsTo: 'https://m1.behance.net/rendition/modules/89420057/disp/13aed6029ce375799df4ae8343b74da1.jpg',
+      defaultsTo: '',
     },
     description: {
       type: 'string',

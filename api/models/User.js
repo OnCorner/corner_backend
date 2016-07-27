@@ -45,11 +45,11 @@ module.exports = {
     },
     coverImage: {
       type: 'string',
-      defaultsTo: 'https://m1.behance.net/rendition/modules/89420057/disp/13aed6029ce375799df4ae8343b74da1.jpg'
+      defaultsTo: ''
     },
     profileImage: {
       type: 'string',
-      defaultsTo: 'https://m1.behance.net/rendition/modules/89420057/disp/13aed6029ce375799df4ae8343b74da1.jpg'
+      defaultsTo: ''
     },
 
     // associations

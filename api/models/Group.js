@@ -21,7 +21,7 @@ module.exports = {
     },
     image: {
       type: 'string',
-      defaultsTo: 'http://ih1.redbubble.net/image.118908526.2682/flat,800x800,075,f.u6.jpg',
+      defaultsTo: '',
     },
     description: {
       type: 'string',
