@@ -1,6 +1,6 @@
 MongoDB Setup
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
-
+// instal homebrew here http://brew.sh/
 $ brew update
 $ brew install mongodb // this takes awhile
 *** go to corner_backend folder
