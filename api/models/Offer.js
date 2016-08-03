@@ -1,5 +1,5 @@
 /**
- * Message.js
+ * Offer.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,26 +9,19 @@ module.exports = {
 
   attributes: {
     // data
-    text: {
-      type: 'string',
+    amount: {
+      type: 'integer',
       required: true,
     },
-    type: {
-      type: 'string',
-      enum: ['ITEM', 'GROUP', 'OFFER'],
+    accepted: {
+      type: 'boolean',
+      defaultsTo: false,
     },
 
     // associations
-    creator: {
-      model: 'user',
+    message: {
+      model: 'message',
       required: true,
     },
-    recipient: {
-      model: 'user',
-      required: true,
-    },
-    chat: {
-      model: 'chat',
-    }
   }
 };

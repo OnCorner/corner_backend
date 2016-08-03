@@ -9,6 +9,11 @@ module.exports = {
 
   attributes: {
     // data
+    email: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
     username: {
       type: 'string',
       required: true,
@@ -25,15 +30,13 @@ module.exports = {
     },
     firstName: {
       type: 'string',
-      required: true,
+    },
+    lastName: {
+      type: 'string',
     },
     type: {
       enum: ['USER', 'ADMIN', 'SUPERUSER'],
       defaultsTo: 'USER'
-    },
-    lastName: {
-      type: 'string',
-      required: true,
     },
     shopDescription: {
       type: 'string'

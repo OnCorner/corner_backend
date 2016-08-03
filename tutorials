@@ -6,7 +6,7 @@ $ brew install mongodb // this takes awhile
 *** go to corner_backend folder
 $ mkdir db
 $ mkdir db/data
-$ mongod --dbpath /db/data // while in the corner_backend directory
+$ mongod --dbpath db/data // while in the corner_backend directory
 
 *** open a new terminal tab and go to corner_backend
 $ sails lift
