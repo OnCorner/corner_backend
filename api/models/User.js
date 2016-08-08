@@ -19,62 +19,110 @@ module.exports = {
       required: true,
       unique: true
     },
-    shopName: {
-      type: 'string',
-      required: true,
-      unique: true
-    },
+    // shopName: {
+    //   type: 'string',
+    //   required: true,
+    //   unique: true
+    // },
     password: {
       type: 'string',
       required: true,
     },
     firstName: {
       type: 'string',
+      required: true,
     },
     lastName: {
+      type: 'string',
+      required: true,
+    },
+    phone: {
+      type: 'string',
+    },
+    address: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+    state: {
+      type: 'string',
+    },
+    country: {
+      type: 'string',
+    },
+    zip: {
+      type: 'string',
+    },
+    instagram: {
+      type: 'string',
+    },
+    twitter: {
+      type: 'string',
+    },
+    facebook: {
       type: 'string',
     },
     type: {
       enum: ['USER', 'ADMIN', 'SUPERUSER'],
-      defaultsTo: 'USER'
+      defaultsTo: 'USER',
+      required: true,
     },
     shopDescription: {
       type: 'string'
     },
     status: {
       type: 'string',
-      enum: ['ACTIVE', 'INACTIVE'],
-      defaultsTo: 'ACTIVE'
+      enum: ['ACTIVE', 'EMAIL_PENDING', 'INACTIVE'],
+      defaultsTo: 'EMAIL_PENDING',
     },
     coverImage: {
       type: 'string',
-      defaultsTo: ''
     },
     profileImage: {
       type: 'string',
-      defaultsTo: ''
     },
 
     // associations
     items: {
       collection: 'item',
-      via: 'user'
+      via: 'user',
     },
-    subscriptions: {
+    categorySubscriptions: {
       collection: 'category',
-      via: 'subscribers'
+      via: 'categorySubscribers',
     },
+    tagSubscriptions: {
+      collection: 'tag',
+      via: 'tagSubscribers',
+    },
+    // following: {
+    //   collection: 'user',
+    //   via: 'followers'
+    // },
+    // followers: {
+    //   collection: 'user',
+    //   via: 'following'
+    // },
     groups: {
       collection: 'group',
-      via: 'members'
+      via: 'members',
     },
     tags: {
       collection: 'tag',
-      via: 'creator'
+      via: 'creator',
     },
     chats: {
       collection: 'chat',
-      via: 'users'
+      via: 'users',
+    },
+    creditCards: {
+      collection: 'creditCard',
+      via: 'user',
+    },
+    comments: {
+      collection: 'comment',
+      via: 'creator',
     }
   }
 };

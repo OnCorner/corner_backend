@@ -33,11 +33,11 @@ module.exports = {
     // associations
     items: {
       collection: 'item',
-      via: 'category'
+      via: 'category',
     },
-    subscribers: {
+    categorySubscribers: {
       collection: 'user',
-      via: 'subscriptions'
+      via: 'categorySubscriptions',
     }
   }
 };

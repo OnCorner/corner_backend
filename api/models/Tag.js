@@ -20,6 +20,10 @@ module.exports = {
       model: 'user',
       required: true,
     },
+    tagSubscribers: {
+      collection: 'user',
+      via: 'tagSubscriptions',
+    },
     items: {
       collection: 'item',
       via: 'tags',

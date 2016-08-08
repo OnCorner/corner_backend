@@ -1,5 +1,5 @@
 /**
- * Comment.js
+ * CreditCard.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,29 +9,31 @@ module.exports = {
 
   attributes: {
     // data
-    text: {
+    cardholderName: {
       type: 'string',
-      required: true,
     },
-    rating: {
-      type: 'float',
-    }
-    type: {
+    last4: {
       type: 'string',
-      enum: ['ITEM', 'GROUP', 'USER'],
+    },
+    address: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+    state: {
+      type: 'string',
+    },
+    country: {
+      type: 'string',
+    },
+    zip: {
+      type: 'string',
     },
 
     // associations
-    creator: {
+    user: {
       model: 'user',
-      required: true,
     },
-    item: {
-      model: 'item',
-    },
-
-    // group: {
-    //   model: 'group',
-    // },
   }
 };

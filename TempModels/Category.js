@@ -35,7 +35,7 @@ module.exports = {
       collection: 'item',
       via: 'category'
     },
-    subscribers: {
+    categorySubscribers: {
       collection: 'user',
       via: 'category'
     }
