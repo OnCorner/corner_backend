@@ -15,7 +15,7 @@ module.exports = {
     },
     type: {
       type: 'string',
-      enum: ['ITEM', 'GROUP'],
+      enum: ['ITEM', 'GROUP', 'USER'],
     },
 
     // associations
@@ -28,6 +28,9 @@ module.exports = {
     },
     group: {
       model: 'group',
+    },
+    user: {
+      model: 'user',
     },
   }
 };

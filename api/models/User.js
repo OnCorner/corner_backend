@@ -9,6 +9,7 @@ module.exports = {
 
   attributes: {
     // data
+    // data
     email: {
       type: 'string',
       required: true,
@@ -19,32 +20,61 @@ module.exports = {
       required: true,
       unique: true
     },
-    shopName: {
-      type: 'string',
-      required: true,
-      unique: true
-    },
+    // shopName: {
+    //   type: 'string',
+    //   required: true,
+    //   unique: true
+    // },
     password: {
       type: 'string',
       required: true,
     },
     firstName: {
       type: 'string',
+      required: true,
     },
     lastName: {
+      type: 'string',
+      required: true,
+    },
+    phone: {
+      type: 'string',
+    },
+    address: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+    state: {
+      type: 'string',
+    },
+    country: {
+      type: 'string',
+    },
+    zip: {
+      type: 'string',
+    },
+    instagram: {
+      type: 'string',
+    },
+    twitter: {
+      type: 'string',
+    },
+    facebook: {
       type: 'string',
     },
     type: {
       enum: ['USER', 'ADMIN', 'SUPERUSER'],
-      defaultsTo: 'USER'
+      defaultsTo: 'USER',
     },
     shopDescription: {
       type: 'string'
     },
     status: {
       type: 'string',
-      enum: ['ACTIVE', 'INACTIVE'],
-      defaultsTo: 'ACTIVE'
+      enum: ['ACTIVE', 'EMAIL_PENDING', 'INACTIVE'],
+      defaultsTo: 'EMAIL_PENDING',
     },
     coverImage: {
       type: 'string',
@@ -60,10 +90,22 @@ module.exports = {
       collection: 'item',
       via: 'user'
     },
-    subscriptions: {
+    categorySubscriptions: {
       collection: 'category',
-      via: 'subscribers'
+      via: 'categorySubscribers',
     },
+    tagSubscriptions: {
+      collection: 'tag',
+      via: 'tagSubscribers',
+    },
+    // following: {
+    //   collection: 'user',
+    //   via: 'followers'
+    // },
+    // followers: {
+    //   collection: 'user',
+    //   via: 'following'
+    // },
     groups: {
       collection: 'group',
       via: 'members'
@@ -75,6 +117,18 @@ module.exports = {
     chats: {
       collection: 'chat',
       via: 'users'
-    }
+    },
+    creditCards: {
+      collection: 'creditCard',
+      via: 'user',
+    },
+    comments: {
+      collection: 'comment',
+      via: 'creator',
+    },
+    likers: {
+      collection: 'group',
+      via: 'likes',
+    },
   }
 };

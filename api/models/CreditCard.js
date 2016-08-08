@@ -1,5 +1,5 @@
 /**
- * Message.js
+ * CreditCard.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,26 +9,31 @@ module.exports = {
 
   attributes: {
     // data
-    text: {
+    cardholderName: {
       type: 'string',
-      required: true,
     },
-    type: {
+    last4: {
       type: 'string',
-      enum: ['USER', 'ITEM', 'GROUP', 'OFFER'],
+    },
+    address: {
+      type: 'string',
+    },
+    city: {
+      type: 'string',
+    },
+    state: {
+      type: 'string',
+    },
+    country: {
+      type: 'string',
+    },
+    zip: {
+      type: 'string',
     },
 
     // associations
-    creator: {
+    user: {
       model: 'user',
-      required: true,
     },
-    recipient: {
-      model: 'user',
-      required: true,
-    },
-    chat: {
-      model: 'chat',
-    }
   }
 };

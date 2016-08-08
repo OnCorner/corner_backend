@@ -13,9 +13,9 @@ module.exports = {
       type: 'integer',
       required: true,
     },
-    status: {
+    status: { // TODO: revisit storing lifecycle of item
       type: 'string',
-      enum: ['SOLD', 'RETURNED', 'UNPAID'],
+      enum: ['SOLD', 'RETURNED', 'UNPAID', 'SHIPPED', 'DELIVERED', 'CONFIRMED'],
       defaultsTo: 'SOLD',
     },
     // associations

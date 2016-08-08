@@ -20,6 +20,10 @@ module.exports = {
     viewCount: {
       type: 'integer',
     },
+    size: {
+      type: 'string',
+      defaultsTo: 'one size',
+    },
     image1: {
       type: 'string',
       defaultsTo: '',
@@ -32,14 +36,18 @@ module.exports = {
       type: 'string',
       defaultsTo: '',
     },
+    image4: {
+      type: 'string',
+      defaultsTo: '',
+    },
     description: {
       type: 'string',
       required: true,
     },
     status: {
       type: 'string',
-      enum: ['SOLD', 'AVAILABLE'],
-      defaultsTo: 'AVAILABLE',
+      enum: ['SOLD', 'ACTIVE', 'INACTIVE'],
+      defaultsTo: 'ACTIVE',
     },
 
     // associations

@@ -17,7 +17,7 @@ module.exports = {
     status: {
       type: 'string',
       enum: ['ACTIVE', 'INACTIVE'],
-      defaultsTo: 'ACTIVE',
+      defaultsTo: 'INACTIVE',
     },
     image: {
       type: 'string',
@@ -25,11 +25,13 @@ module.exports = {
     },
     description: {
       type: 'string',
+      required: true,
     },
 
     // associations
     creator: {
       model: 'user',
+      required: true,
     },
     moderators: {
       collection: 'user',
@@ -37,6 +39,10 @@ module.exports = {
     members: {
       collection: 'user',
       via: 'groups',
+    },
+    likes: {
+      collection: 'user',
+      via: 'likers',
     },
     tags: {
       collection: 'tag',
