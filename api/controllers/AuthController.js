@@ -62,6 +62,8 @@ var password = require('password-hash-and-salt');
       // Store hash (incl. algorithm, iterations, and salt)
       user.password = hash;
       user.email = data.email;
+      user.firstName = data.firstName;
+      user.lastName = data.lastName;
       user.username = data.username;
       user.shopName = data.shopName;
       User.create(user)
