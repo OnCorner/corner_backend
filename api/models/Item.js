@@ -17,8 +17,13 @@ module.exports = {
       type: 'integer',
       required: true,
     },
+    description: {
+      type: 'string',
+      required: true,
+    },
     viewCount: {
       type: 'integer',
+      defaultsTo: 0
     },
     size: {
       type: 'string',
@@ -39,10 +44,6 @@ module.exports = {
     image4: {
       type: 'string',
       defaultsTo: '',
-    },
-    description: {
-      type: 'string',
-      required: true,
     },
     status: {
       type: 'string',
