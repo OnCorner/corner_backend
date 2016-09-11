@@ -71,7 +71,7 @@ module.exports.connections = {
     port: 29426,
     user: 'conner', //optional
     password: 'test', //optional
-    // database: 'heroku_rwn9nj8j' //optional
+    database: 'heroku_rwn9nj8j' //optional
   },
 
   /***************************************************************************
