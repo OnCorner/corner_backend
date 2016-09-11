@@ -45,3 +45,6 @@ Char
   - has array of Users and Messages
 
 Message
+
+CreditCard
+  - cardHolder
