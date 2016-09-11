@@ -113,9 +113,8 @@ module.exports = {
 
     // TODO: or maybe I must put isSold inside the item?
 
-    Item
-    .find({status: 'ACTIVE'})
-    .where({ or: [user.categorySubscriptions, {user.tagSubscriptions}] })
+    Item.find({status: 'ACTIVE'})
+    .where({ or: [user.categorySubscriptions, user.tagSubscriptions] })
     // .populate('purchase', {where: {not: {status: 'SOLD'}}})
     // .find({purchase.status != 'SOLD'})
     .sort('viewCount DESC')
@@ -123,14 +122,12 @@ module.exports = {
     .then(function(items) {
       res.json(items);
     });
-
   },
   newsfeed: function(req, res) {
     var data = req.params.all();
     var user = data.user;
-    Item
-    .find({status: 'ACTIVE'})
-    .where({ or: [user.categorySubscriptions, {user.tagSubscriptions}] })
+    Item.find({status: 'ACTIVE'})
+    .where({ or: [user.categorySubscriptions, user.tagSubscriptions] })
     // .populate('purchase', {where: {not: {status: 'SOLD'}}})
     // .find({purchase.status != 'SOLD'})
     .sort('createdAt ASC')
