@@ -11,14 +11,21 @@ var jwt = require('jsonwebtoken');
 
  module.exports = {
   session: function(req, res) {
-    console.log("Session::req.session", req.session);
-    if(req.session.user) {
-      console.log("session is set");
-      return res.json(req.session.user);
-    } else {
-      console.log("redirect: session isn't set");
-      res.status(400).send('No session');
-    }
+    var data = req.params.all();
+    jwt.verify(data.token, 'corner', function(err, decoded) {
+      if(decoded == undefined) {
+        return res.status(400).send('No session');
+      }
+      User.findOne({username: decoded.username})
+      .populateAll()
+      .then((user) => {
+        delete user.password;
+        res.json(user);
+      })
+      .catch(() => {
+        res.status(400).send('No session');
+      });
+    });
   },
   login: function(req, res) {
     var data = req.params.all();
@@ -49,7 +56,6 @@ var jwt = require('jsonwebtoken');
     });
   },
   signup: function(req, res) {
-    console.log("signup");
     var data = req.params.all();
     var user = {};
 
@@ -82,7 +88,7 @@ var jwt = require('jsonwebtoken');
     });
   },
   logout: function(req, res) {
-    delete req.session.user;
-    res.ok();
+    console.log("logout");
+    return res.cookie('jwt', '').ok();
   }
 };
