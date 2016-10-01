@@ -17,8 +17,26 @@ module.exports = {
       type: 'integer',
       required: true,
     },
+    size: {
+      type: 'string',
+      required: true,
+    },
+    zip: {
+      type: 'integer',
+      required: true,
+    },
+    condition: {
+      type: 'string',
+      enum: ['used', 'new'],
+      defaultsTo: 'AVAILABLE',
+      required: true,
+    },
     viewCount: {
       type: 'integer',
+    },
+    quantity: {
+      type: 'integer',
+      defaultsTo: 1,
     },
     image1: {
       type: 'string',

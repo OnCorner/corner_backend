@@ -9,7 +9,6 @@ module.exports = {
 
   attributes: {
     // data
-    // data
     email: {
       type: 'string',
       required: true,

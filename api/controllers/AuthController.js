@@ -5,8 +5,9 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
- var Promise = require('bluebird');
+var Promise = require('bluebird');
 var password = require('password-hash-and-salt');
+var jwt = require('jsonwebtoken');
 
  module.exports = {
   session: function(req, res) {
@@ -22,11 +23,7 @@ var password = require('password-hash-and-salt');
   login: function(req, res) {
     var data = req.params.all();
     User.findOne({username: data.username})
-    .populate('items')
-    .populate('subscriptions')
-    .populate('groups')
-    .populate('tags')
-    .populate('chats')
+    .populateAll()
     .then(function(user) {
       if(!user) {
         res.status(400).send('That user was not found!');
@@ -41,9 +38,12 @@ var password = require('password-hash-and-salt');
         } else {
           user.password = "";
           delete user.password;
-          req.session.user = user;
-          console.log("session is set: req.session", req.session);
-          res.json(user);
+          var token = jwt.sign(user, 'corner');
+          res.json({
+            success: true,
+            token: token,
+            user: user,
+          });
         }
       });
     });
@@ -51,7 +51,6 @@ var password = require('password-hash-and-salt');
   signup: function(req, res) {
     console.log("signup");
     var data = req.params.all();
-    // console.log(data);
     var user = {};
 
     password(data.password).hash(function(error, hash) {
@@ -65,19 +64,20 @@ var password = require('password-hash-and-salt');
       user.firstName = data.firstName;
       user.lastName = data.lastName;
       user.username = data.username;
-      user.shopName = data.shopName;
       User.create(user)
       .exec(function(err, newUser) {
         if(err) {
           res.status(400).send('That user already exists!');
         }
-        console.log("signed up user", newUser);
         newUser.password = "";
         delete newUser.password;
 
-        req.session.newUser = newUser;
-        console.log("req.session", req.session);
-        res.json(newUser);
+        var token = jwt.sign(newUser, 'corner');
+        res.json({
+          success: true,
+          token: token,
+          user: newUser,
+        });
       });
     });
   },
