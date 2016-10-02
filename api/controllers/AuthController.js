@@ -58,7 +58,6 @@ var jwt = require('jsonwebtoken');
   signup: function(req, res) {
     var data = req.params.all();
     var user = {};
-
     password(data.password).hash(function(error, hash) {
       if(error) {
         throw new Error('Something went wrong!');
