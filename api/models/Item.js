@@ -21,13 +21,35 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    brand: {
+      type: 'string',
+      required: true,
+    },
+    style: {
+      type: 'string',
+      required: true,
+    },
     viewCount: {
       type: 'integer',
       defaultsTo: 0
     },
+    quantity: {
+      type: 'integer',
+      defaultsTo: 1
+    },
     size: {
       type: 'string',
       defaultsTo: 'one size',
+    },
+    zip: {
+      type: 'integer',
+      required: true,
+    },
+    condition: {
+      type: 'string',
+      enum: ['used', 'new'],
+      defaultsTo: 'AVAILABLE',
+      required: true,
     },
     image1: {
       type: 'string',
@@ -41,14 +63,30 @@ module.exports = {
       type: 'string',
       defaultsTo: '',
     },
-    image4: {
-      type: 'string',
-      defaultsTo: '',
-    },
+    // image4: {
+    //   type: 'string',
+    //   defaultsTo: '',
+    // },
     status: {
       type: 'string',
       enum: ['SOLD', 'ACTIVE', 'INACTIVE'],
       defaultsTo: 'ACTIVE',
+    },
+    acceptingOffers: {
+      type: 'boolean',
+      defaultsTo: false,
+    },
+    canMeetUp: {
+      type: 'boolean',
+      defaultsTo: false,
+    },
+    shipping: {
+      type: 'boolean',
+      defaultsTo: false,
+    },
+    freeShipping: {
+      type: 'boolean',
+      defaultsTo: false,
     },
 
     // associations
