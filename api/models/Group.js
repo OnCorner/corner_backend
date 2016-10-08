@@ -27,6 +27,10 @@ module.exports = {
       type: 'string',
       required: true,
     },
+    private: {
+      type: 'boolean',
+      defaultsTo: false
+    },
 
     // associations
     creator: {
@@ -52,5 +56,11 @@ module.exports = {
       collection: 'tag',
       via: 'groups',
     },
+    category: {
+      model: 'category',
+    },
+    relatedGroups: {
+      collection: 'group',
+    }
   }
 }

@@ -35,6 +35,10 @@ module.exports = {
       collection: 'item',
       via: 'category'
     },
+    groups: {
+      collection: 'group',
+      via: 'category'
+    },
     categorySubscribers: {
       collection: 'user',
       via: 'categorySubscriptions',
