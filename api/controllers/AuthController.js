@@ -40,7 +40,7 @@ var jwt = require('jsonwebtoken');
         if(error)
           throw new Error('Something went wrong!');
         if(!verified) {
-          console.log("Don't try! We got you!");
+          console.log("Not verified");
           return CError.send(res, 'bad password!', {user: user});
         } else {
           user.password = "";
