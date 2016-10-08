@@ -19,11 +19,10 @@ module.exports = {
       required: true,
       unique: true
     },
-    // shopName: {
-    //   type: 'string',
-    //   required: true,
-    //   unique: true
-    // },
+    shopName: {
+      type: 'string',
+      unique: true
+    },
     password: {
       type: 'string',
       required: true,
