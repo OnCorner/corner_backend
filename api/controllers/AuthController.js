@@ -14,16 +14,16 @@ var jwt = require('jsonwebtoken');
     var data = req.params.all();
     jwt.verify(data.token, 'corner', function(err, decoded) {
       if(decoded == undefined) {
-        return res.status(400).send('No session');
+        return CError.send(res, 'No session', {jwtError: err});
       }
       User.findOne({username: decoded.username})
       .populateAll()
       .then((user) => {
+        if(!user) {
+          return CError.send(res, 'No session', {user: user});
+        }
         delete user.password;
         res.json(user);
-      })
-      .catch(() => {
-        res.status(400).send('No session');
       });
     });
   },
@@ -33,7 +33,7 @@ var jwt = require('jsonwebtoken');
     .populateAll()
     .then(function(user) {
       if(!user) {
-        res.status(400).send('That user was not found!');
+        return CError.send(res, 'That user was not found!', {user: user});
       }
 
       password(data.password).verifyAgainst(user.password, function(error, verified) {
@@ -41,13 +41,12 @@ var jwt = require('jsonwebtoken');
           throw new Error('Something went wrong!');
         if(!verified) {
           console.log("Don't try! We got you!");
-          res.status(400).send('bad password!');
+          return CError.send(res, 'bad password!', {user: user});
         } else {
           user.password = "";
           delete user.password;
           var token = jwt.sign(user, 'corner');
           res.json({
-            success: true,
             token: token,
             user: user,
           });
@@ -56,11 +55,12 @@ var jwt = require('jsonwebtoken');
     });
   },
   signup: function(req, res) {
+
     var data = req.params.all();
     var user = {};
     password(data.password).hash(function(error, hash) {
       if(error) {
-        throw new Error('Something went wrong!');
+        return CError.send(res, 'Password hashing did not work!');
       }
 
       // Store hash (incl. algorithm, iterations, and salt)
@@ -72,14 +72,13 @@ var jwt = require('jsonwebtoken');
       User.create(user)
       .exec(function(err, newUser) {
         if(err) {
-          res.status(400).send('That user already exists!');
+          return CError.send(res, 'That user already exists!');
         }
         newUser.password = "";
         delete newUser.password;
 
         var token = jwt.sign(newUser, 'corner');
         res.json({
-          success: true,
           token: token,
           user: newUser,
         });
@@ -89,5 +88,9 @@ var jwt = require('jsonwebtoken');
   logout: function(req, res) {
     console.log("logout");
     return res.cookie('jwt', '').ok();
+  },
+  error: function(req, res) {
+    var data = req.params.all();
+    return CError.send(res, 'Not Authorized', {hello: "my other stuff", max: "payen"});
   }
 };

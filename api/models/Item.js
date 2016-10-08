@@ -58,6 +58,10 @@ module.exports = {
     category: {
       model: 'category',
     },
+    groups: {
+      collection: 'group',
+      via: 'items',
+    },
     purchase: {
       model: 'purchase',
     },

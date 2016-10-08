@@ -67,9 +67,27 @@ module.exports = {
     category: {
       model: 'user'
     },
+    group: {
+      model: 'group'
+    },
     tags: {
       collection: 'tag',
       via: 'item'
     },
   }
 };
+
+Api.server.findOne('group', {group: groupId})
+.then((group) => {
+  if(group == null) {
+    return Api.server.create('group', {name: "Nike"})
+  }
+
+  return group;
+})
+.then((groupRes) => {
+  return Api.server.create('item', {name: "Shoe XX2", group: groupRes.id, user: session.user.id, price: 500})
+})
+.then((newItem) => {
+  console.log("newItem", newItem);
+})

@@ -40,6 +40,10 @@ module.exports = {
       collection: 'user',
       via: 'groups',
     },
+    items: {
+      collection: 'item',
+      via: 'groups',
+    },
     likes: {
       collection: 'user',
       via: 'likers',
