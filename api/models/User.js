@@ -21,6 +21,7 @@ module.exports = {
     },
     shopName: {
       type: 'string',
+      defaultsTo: '',
       unique: true
     },
     password: {
@@ -52,6 +53,7 @@ module.exports = {
     },
     zip: {
       type: 'string',
+      defaultsTo: ''
     },
     instagram: {
       type: 'string',
@@ -67,14 +69,15 @@ module.exports = {
       defaultsTo: 'USER',
     },
     shopDescription: {
-      type: 'string'
+      type: 'string',
+      defaultsTo: ''
     },
     status: {
       type: 'string',
       enum: ['ACTIVE', 'EMAIL_PENDING', 'INACTIVE'],
       defaultsTo: 'EMAIL_PENDING',
     },
-    coverImage: {
+    shopImage: {
       type: 'string',
       defaultsTo: ''
     },
