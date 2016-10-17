@@ -9,10 +9,6 @@ module.exports = {
 
   attributes: {
     // data
-    name: {
-      type: 'string',
-      required: true,
-    },
     price: {
       type: 'integer',
       required: true,
@@ -47,7 +43,7 @@ module.exports = {
     },
     condition: {
       type: 'string',
-      enum: ['used', 'new'],
+      enum: ['USED', 'NEW'],
       defaultsTo: 'AVAILABLE',
       required: true,
     },
