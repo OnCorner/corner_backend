@@ -36,14 +36,27 @@ module.exports = {
       recipient: data.recipientId,
       chat: data.chatId,
     };
-    Message.create(messageData)
+    Message.create(messageData).populateAll()
     .exec(function(err, message) {
       if(err || !message) {
         return CError.send(res, 'Message could not be sent', {messageData: messageData});
       }
 
-      sails.sockets.blast(data.chatId, message);
-      return res.json(message);
+      Message.findOne(message.id).populateAll()
+      .exec(function(err, populatedMessage) {
+        sails.sockets.broadcast(data.chatId, 'CHAT_MESSAGE', populatedMessage);
+        return res.json(populatedMessage);
+      })
     })
+  },
+  joinRoom: function(req, res) {
+    var data = req.params.all();
+    if(!req.isSocket) {
+      return CError.send(res, 'Room could not be joined because red is not Socket');
+    }
+
+    sails.sockets.join(req, data.chat.id);
+
+    return res.ok();
   }
 };
